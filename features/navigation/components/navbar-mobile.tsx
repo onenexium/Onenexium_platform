@@ -26,19 +26,19 @@ export function NavbarMobile() {
                 <Button
                     variant="ghost"
                     size="icon"
-                    className="md:hidden"
+                    className="-mr-2 md:hidden"
                     aria-label="Toggle menu"
                 >
                     <Menu className="h-5 w-5" />
                 </Button>
             </SheetTrigger>
-            <SheetContent side="right" className="flex flex-col gap-8 bg-surface/95 backdrop-blur-md border-l border-border">
-                <SheetHeader>
+            <SheetContent side="right" className="flex flex-col gap-8 bg-surface/95 backdrop-blur-md border-l border-border px-0">
+                <SheetHeader className="px-6 pt-6">
                     <SheetTitle className="text-left">
                         <NavbarLogo />
                     </SheetTitle>
                 </SheetHeader>
-                <nav className="flex flex-col gap-4">
+                <nav className="flex flex-col gap-2 px-6">
                     {NAV_LINKS.map((link) => {
                         const isActive = pathname === link.href
                         return (
@@ -47,7 +47,7 @@ export function NavbarMobile() {
                                 href={link.href}
                                 onClick={() => setOpen(false)}
                                 className={cn(
-                                    'text-lg font-medium transition-colors hover:text-text-primary',
+                                    'py-2 text-lg font-medium transition-colors hover:text-text-primary',
                                     isActive ? 'text-text-primary' : 'text-text-muted'
                                 )}
                             >
@@ -56,13 +56,13 @@ export function NavbarMobile() {
                         )
                     })}
                 </nav>
-                <div className="flex flex-col gap-3">
-                    <Button asChild variant="ghost" className="w-full justify-start">
+                <div className="mt-auto flex flex-col gap-3 px-6 pb-8">
+                    <Button asChild variant="ghost" className="w-full justify-start px-0 hover:bg-transparent hover:text-text-primary">
                         <Link href={SIGN_IN_HREF} onClick={() => setOpen(false)}>
                             Sign in
                         </Link>
                     </Button>
-                    <Button asChild className="w-full justify-start">
+                    <Button asChild className="w-full">
                         <Link href={SIGN_UP_HREF} onClick={() => setOpen(false)}>
                             Get started free
                         </Link>
