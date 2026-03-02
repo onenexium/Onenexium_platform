@@ -7,7 +7,8 @@ import { StepConnector } from './step-connector'
 
 interface StepListProps {
     activeStep: number
-    onStepClick: (index: number) => void
+    // eslint-disable-next-line no-unused-vars
+    onStepClick: (stepIndex: number) => void
 }
 
 export function StepList({ activeStep, onStepClick }: StepListProps) {

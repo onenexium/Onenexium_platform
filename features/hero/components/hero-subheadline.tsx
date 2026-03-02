@@ -12,7 +12,7 @@ export function HeroSubheadline() {
             initial={isReducedMotion ? { opacity: 1 } : { opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.6, delay: 0.5 }}
-            className="max-w-lg mx-auto text-center font-sans text-base leading-relaxed text-slate-600 sm:text-lg"
+            className="max-w-lg mx-auto text-center font-sans text-text-secondary"
         >
             <p>{HERO_SUBHEADLINE_LINE1}</p>
             <p>{HERO_SUBHEADLINE_LINE2}</p>

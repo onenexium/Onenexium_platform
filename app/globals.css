@@ -77,11 +77,17 @@
   --radius-2xl: 24px;
   --radius-full: 9999px;
 
-  /* ── Spacing Scale (use these for section padding) ───── */
-  --section-py: 6rem;
-  /* py-24 */
-  --section-py-lg: 8rem;
-  /* py-32 */
+  /* ── Spacing Scale (Fluid for responsiveness) ────────── */
+  --section-py: clamp(4rem, 8vw, 8rem);
+  /* Fluid: 64px to 128px */
+  --container-px: clamp(1rem, 5vw, 2rem);
+  /* Fluid side padding */
+
+  /* ── Typography Scale (Fluid using clamp) ────────────── */
+  --font-size-h1: clamp(2.5rem, 6vw + 1rem, 4.5rem);
+  --font-size-h2: clamp(2rem, 4vw + 1rem, 3.5rem);
+  --font-size-h3: clamp(1.5rem, 2vw + 1rem, 2.25rem);
+  --font-size-body: clamp(1rem, 0.2vw + 0.9rem, 1.125rem);
 
   /* ── Transitions ─────────────────────────────────────── */
   --transition-fast: 150ms cubic-bezier(0.4, 0, 0.2, 1);
@@ -173,6 +179,29 @@
     background-size: 100% 100%, 24px 24px, 100% 100%;
     background-attachment: fixed;
     min-height: 100vh;
+    font-size: var(--font-size-body);
+    line-height: 1.6;
+  }
+
+  /* ── Fluid Typography Utilities ──────────────────────── */
+  h1,
+  .text-h1 {
+    font-size: var(--font-size-h1);
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+  }
+
+  h2,
+  .text-h2 {
+    font-size: var(--font-size-h2);
+    line-height: 1.2;
+    letter-spacing: -0.01em;
+  }
+
+  h3,
+  .text-h3 {
+    font-size: var(--font-size-h3);
+    line-height: 1.3;
   }
 
   /* Selection color */

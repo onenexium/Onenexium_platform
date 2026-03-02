@@ -24,9 +24,9 @@ export function HeroChatInput() {
             initial={isReducedMotion ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.97 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.6, delay: 0.8, ease: 'easeOut' }}
-            className="w-full max-w-2xl mx-auto"
+            className="w-full max-w-2xl mx-auto px-4 sm:px-0"
         >
-            <div className="group relative rounded-2xl bg-white/95 border border-slate-200/80 p-5 shadow-[0_4px_24px_-1px_rgba(0,0,0,0.04),0_2px_8px_-2px_rgba(0,0,0,0.03),inset_0_0_0_1px_rgba(255,255,255,0.8)] transition-all duration-200 hover:shadow-[0_8px_32px_-1px_rgba(0,0,0,0.06),0_4px_12px_-2px_rgba(0,0,0,0.04)]">
+            <div className="group relative rounded-2xl bg-surface/95 border border-border p-4 sm:p-5 shadow-sm transition-all duration-200 hover:shadow-md">
                 {/* Textarea Input */}
                 <textarea
                     ref={textareaRef}
@@ -34,7 +34,7 @@ export function HeroChatInput() {
                     onChange={handleChange}
                     onKeyDown={handleKeyDown}
                     placeholder={HERO_INPUT_PLACEHOLDER}
-                    className="w-full min-h-[80px] max-h-[200px] resize-none bg-transparent border-0 p-0 text-slate-700 placeholder:text-slate-400 focus:ring-0 leading-relaxed text-base outline-none"
+                    className="w-full min-h-[80px] max-h-[200px] resize-none bg-transparent border-0 p-0 text-text-primary placeholder:text-text-muted focus:ring-0 leading-relaxed text-base outline-none"
                 />
 
                 {/* Bottom Bar */}
@@ -44,7 +44,7 @@ export function HeroChatInput() {
                         type="button"
                         onClick={() => { }}
                         aria-label="Attach file"
-                        className="flex h-8 w-8 items-center justify-center rounded-lg text-slate-400 transition-colors hover:bg-slate-100 hover:text-slate-600 focus:outline-none"
+                        className="flex h-8 w-8 items-center justify-center rounded-lg text-text-muted transition-colors hover:bg-bg-subtle hover:text-text-primary focus:outline-none"
                     >
                         <Plus size={18} />
                     </button>
@@ -57,8 +57,8 @@ export function HeroChatInput() {
                         className={cn(
                             "flex h-9 w-9 items-center justify-center rounded-full transition-all duration-200 focus:outline-none",
                             isEmpty || isLoading
-                                ? "bg-[#6b7db3]/60 cursor-not-allowed opacity-60"
-                                : "bg-[#6b7db3] text-white hover:brightness-110 hover:scale-105 active:scale-95"
+                                ? "bg-accent/40 cursor-not-allowed"
+                                : "bg-accent text-white hover:brightness-110 hover:scale-105 active:scale-95"
                         )}
                     >
                         <ArrowUp

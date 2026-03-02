@@ -47,8 +47,8 @@ export function NavbarMobile() {
                                 href={link.href}
                                 onClick={() => setOpen(false)}
                                 className={cn(
-                                    'text-lg font-medium transition-colors hover:text-foreground',
-                                    isActive ? 'text-foreground' : 'text-muted-foreground'
+                                    'text-lg font-medium transition-colors hover:text-text-primary',
+                                    isActive ? 'text-text-primary' : 'text-text-muted'
                                 )}
                             >
                                 {link.label}

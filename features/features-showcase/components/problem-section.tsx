@@ -73,7 +73,7 @@ export function ProblemSection() {
                         animate={controls}
                         variants={fadeVariants}
                         custom={0}
-                        className="text-xs font-semibold tracking-widest uppercase text-slate-400"
+                        className="text-xs font-semibold tracking-widest uppercase text-text-muted"
                     >
                         {PROBLEM_TOP_LABEL}
                     </motion.span>
@@ -82,7 +82,7 @@ export function ProblemSection() {
                         animate={controls}
                         variants={fadeVariants}
                         custom={0.1}
-                        className="mt-4 text-4xl font-bold text-white md:text-5xl"
+                        className="mt-4 font-bold text-text-primary"
                     >
                         {PROBLEM_HEADLINE}
                     </motion.h2>
@@ -99,33 +99,33 @@ export function ProblemSection() {
                         <motion.div
                             key={card.id}
                             variants={cardVariants}
-                            className="flex flex-col rounded-2xl border border-slate-700 bg-slate-800/50 p-6 transition-colors hover:bg-slate-800/80"
+                            className="flex flex-col rounded-2xl border border-border bg-surface p-6 transition-all hover:shadow-md"
                         >
-                            <div className="flex items-center gap-x-3 text-white">
-                                <card.icon className="h-5 w-5 text-primary" />
-                                <h3 className="font-semibold">{card.title}</h3>
+                            <div className="flex items-center gap-x-3 text-text-primary">
+                                <card.icon className="h-5 w-5 text-accent" />
+                                <h3 className="font-semibold text-h3">{card.title}</h3>
                             </div>
 
                             {/* Promise Section */}
                             <div className="mt-6 flex-1">
-                                <p className="text-sm font-medium text-emerald-400">
+                                <p className="text-sm font-medium text-success">
                                     What they promise:
                                 </p>
-                                <p className="mt-2 text-slate-300 italic">&quot;{card.promise}&quot;</p>
+                                <p className="mt-2 text-text-secondary italic">&quot;{card.promise}&quot;</p>
 
                                 {/* Animated Arrow */}
                                 <div className="my-6 flex justify-center">
-                                    <ChevronDown className="h-5 w-5 animate-bounce text-slate-500" />
+                                    <ChevronDown className="h-5 w-5 animate-bounce text-text-muted" />
                                 </div>
 
                                 {/* Reality Section */}
-                                <p className="text-sm font-medium text-red-400">
+                                <p className="text-sm font-medium text-error">
                                     What actually happens:
                                 </p>
                                 <ul className="mt-4 flex flex-col gap-3">
                                     {card.reality.map((item, i) => (
-                                        <li key={i} className="flex items-start gap-3 text-sm text-slate-400">
-                                            <X className="mt-0.5 h-4 w-4 shrink-0 text-red-400/60" />
+                                        <li key={i} className="flex items-start gap-3 text-sm text-text-secondary">
+                                            <X className="mt-0.5 h-4 w-4 shrink-0 text-error/60" />
                                             <span>{item}</span>
                                         </li>
                                     ))}
@@ -133,8 +133,8 @@ export function ProblemSection() {
                             </div>
 
                             {/* Bottom Text */}
-                            <div className="mt-8 border-t border-slate-700 pt-6">
-                                <p className="text-sm font-semibold text-red-400">
+                            <div className="mt-8 border-t border-border pt-6">
+                                <p className="text-sm font-semibold text-error">
                                     {card.bottomText}
                                 </p>
                             </div>
@@ -151,15 +151,15 @@ export function ProblemSection() {
                         initial="hidden"
                         className="flex flex-col items-center"
                     >
-                        <p className="text-lg text-slate-400">{PROBLEM_TRANSITION_UP}</p>
+                        <p className="text-lg text-text-secondary">{PROBLEM_TRANSITION_UP}</p>
                         <motion.div
                             animate={isReducedMotion ? {} : { y: [0, 8, 0] }}
                             transition={{ repeat: Infinity, duration: 2 }}
                             className="mt-4"
                         >
-                            <ArrowDown className="h-6 w-6 text-white opacity-50" />
+                            <ArrowDown className="h-6 w-6 text-text-primary opacity-50" />
                         </motion.div>
-                        <h3 className="mt-6 max-w-2xl text-2xl font-bold text-white md:text-3xl">
+                        <h3 className="mt-6 max-w-2xl font-bold text-text-primary">
                             {PROBLEM_TRANSITION_DOWN}
                         </h3>
                     </motion.div>
