@@ -58,7 +58,26 @@
   /* muted red                          */
   --error-subtle: 4 65% 96%;
 
-  /* ── Shadows ─────────────────────────────────────────── */
+  /* ── shadcn/ui Compatibility (Root Mapping) ──────────── */
+  --background: var(--bg-page);
+  --foreground: var(--text-primary);
+  --card: var(--bg-surface);
+  --card-foreground: var(--text-primary);
+  --popover: var(--bg-surface);
+  --popover-foreground: var(--text-primary);
+  --primary: var(--accent);
+  --primary-foreground: var(--text-inverse);
+  --secondary: var(--bg-subtle);
+  --secondary-foreground: var(--text-primary);
+  --muted: var(--bg-muted);
+  --muted-foreground: var(--text-muted);
+  --accent: var(--accent-subtle);
+  --accent-foreground: var(--accent);
+  --destructive: var(--error);
+  --destructive-foreground: var(--text-inverse);
+  --border: var(--border);
+  --input: var(--border-subtle);
+  --ring: var(--accent);
   --shadow-xs: 0 1px 2px 0 hsl(225 30% 15% / 0.04);
   --shadow-sm: 0 2px 4px 0 hsl(225 30% 15% / 0.06),
     0 1px 2px -1px hsl(225 30% 15% / 0.04);
@@ -152,6 +171,28 @@
       hsl(225 35% 12%) 0%,
       hsl(225 35% 8%) 50%,
       hsl(225 35% 8%) 100%);
+
+  /* ── shadcn/ui Compatibility (Dark Mapping) ──────────── */
+  --background: var(--bg-page);
+  --foreground: var(--text-primary);
+  --card: var(--bg-surface);
+  --card-foreground: var(--text-primary);
+  --popover: var(--bg-surface);
+  --popover-foreground: var(--text-primary);
+  --primary: var(--accent);
+  --primary-foreground: var(--text-primary);
+  /* Lighter in dark mode */
+  --secondary: var(--bg-subtle);
+  --secondary-foreground: var(--text-primary);
+  --muted: var(--bg-muted);
+  --muted-foreground: var(--text-muted);
+  --accent: var(--accent-subtle);
+  --accent-foreground: var(--accent);
+  --destructive: var(--error);
+  --destructive-foreground: var(--text-primary);
+  --border: var(--border);
+  --input: var(--border-subtle);
+  --ring: var(--accent);
 
   --stripe-texture: repeating-linear-gradient(90deg,
       transparent 0px,

@@ -32,7 +32,7 @@ export function NavbarMobile() {
                     <Menu className="h-5 w-5" />
                 </Button>
             </SheetTrigger>
-            <SheetContent side="right" className="flex flex-col gap-8">
+            <SheetContent side="right" className="flex flex-col gap-8 bg-surface/95 backdrop-blur-md border-l border-border">
                 <SheetHeader>
                     <SheetTitle className="text-left">
                         <NavbarLogo />
