@@ -1,0 +1,297 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+@import "shadcn/tailwind.css";
+
+@custom-variant dark (&:is(.dark *));
+
+:root {
+  /* ── Background System ───────────────────────────────── */
+  --bg-page: 220 33% 96%;
+  /* #f0f3fa — soft blue-white page bg  */
+  --bg-surface: 0 0% 100%;
+  /* #ffffff — cards, inputs, panels    */
+  --bg-surface-hover: 220 30% 98%;
+  /* slightly blue-tinted hover         */
+  --bg-subtle: 220 25% 94%;
+  /* #edf0f8 — muted backgrounds        */
+  --bg-muted: 220 20% 90%;
+  /* #e2e7f2 — borders, dividers        */
+
+  /* ── Text System ─────────────────────────────────────── */
+  --text-primary: 225 45% 18%;
+  /* #1e2d52 — deep navy, main headings */
+  --text-secondary: 220 20% 35%;
+  /* #485070 — body text                */
+  --text-muted: 220 15% 55%;
+  /* #7a84a0 — captions, placeholders   */
+  --text-disabled: 220 10% 70%;
+  /* #a8afc2 — disabled states          */
+  --text-inverse: 0 0% 100%;
+  /* #ffffff — on dark backgrounds      */
+
+  /* ── Brand Accent ────────────────────────────────────── */
+  --accent: 225 35% 52%;
+  /* #6b7db3 — the hero send button     */
+  --accent-hover: 225 35% 45%;
+  /* darker on hover                    */
+  --accent-subtle: 225 35% 95%;
+  /* #eef0f9 — light accent backgrounds */
+  --accent-border: 225 30% 80%;
+  /* #b8c0d8 — accent-tinted borders    */
+
+  /* ── Surface Borders ─────────────────────────────────── */
+  --border: 220 25% 88%;
+  /* #dce2f0 — standard border          */
+  --border-strong: 220 25% 78%;
+  /* #bdc7e0 — emphasized border        */
+  --border-subtle: 220 25% 93%;
+  /* #eceff8 — very subtle border       */
+
+  /* ── Semantic ────────────────────────────────────────── */
+  --success: 152 45% 40%;
+  /* muted green                        */
+  --success-subtle: 152 45% 95%;
+  --warning: 38 80% 50%;
+  /* muted amber                        */
+  --warning-subtle: 38 80% 96%;
+  --error: 4 65% 50%;
+  /* muted red                          */
+  --error-subtle: 4 65% 96%;
+
+  /* ── Shadows ─────────────────────────────────────────── */
+  --shadow-xs: 0 1px 2px 0 hsl(225 30% 15% / 0.04);
+  --shadow-sm: 0 2px 4px 0 hsl(225 30% 15% / 0.06),
+    0 1px 2px -1px hsl(225 30% 15% / 0.04);
+  --shadow-md: 0 4px 12px -2px hsl(225 30% 15% / 0.08),
+    0 2px 6px -2px hsl(225 30% 15% / 0.05);
+  --shadow-lg: 0 12px 32px -4px hsl(225 30% 15% / 0.10),
+    0 4px 12px -4px hsl(225 30% 15% / 0.06);
+  --shadow-xl: 0 24px 48px -8px hsl(225 30% 15% / 0.12),
+    0 8px 20px -6px hsl(225 30% 15% / 0.07);
+
+  /* ── Border Radius ───────────────────────────────────── */
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 14px;
+  --radius-xl: 18px;
+  --radius-2xl: 24px;
+  --radius-full: 9999px;
+
+  /* ── Spacing Scale (use these for section padding) ───── */
+  --section-py: 6rem;
+  /* py-24 */
+  --section-py-lg: 8rem;
+  /* py-32 */
+
+  /* ── Transitions ─────────────────────────────────────── */
+  --transition-fast: 150ms cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-base: 200ms cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-slow: 300ms cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-enter: 500ms cubic-bezier(0.16, 1, 0.3, 1);
+  /* spring-like */
+
+  /* ── Professional Background Stack ───────────────────── */
+  --gradient-page: linear-gradient(to bottom,
+      hsl(220 45% 92%) 0%,
+      hsl(220 33% 96%) 35%,
+      hsl(220 33% 96%) 100%);
+
+  --vignette: radial-gradient(circle at center,
+      transparent 30%,
+      rgba(220, 230, 250, 0.2) 100%);
+
+  /* ── Tech Dot Grid Texture ────────────────────────── */
+  --tech-dots: radial-gradient(circle,
+      hsl(225 30% 80% / 0.15) 1px,
+      transparent 1px);
+}
+
+/* ── Dark Mode Overrides ───────────────────────────────────── */
+.dark {
+  --bg-page: 225 35% 8%;
+  /* #0d1120 — very deep navy           */
+  --bg-surface: 225 30% 11%;
+  /* #141929 — card backgrounds         */
+  --bg-surface-hover: 225 28% 14%;
+  --bg-subtle: 225 28% 13%;
+  --bg-muted: 225 25% 16%;
+
+  --text-primary: 220 40% 92%;
+  /* #dde5f5 — near white headings      */
+  --text-secondary: 220 20% 70%;
+  /* #a0aaC0 — body text                */
+  --text-muted: 220 15% 50%;
+  /* #6e788f — muted text               */
+  --text-disabled: 220 10% 35%;
+
+  --accent: 225 40% 62%;
+  /* slightly lighter in dark mode      */
+  --accent-hover: 225 40% 70%;
+  --accent-subtle: 225 40% 15%;
+  --accent-border: 225 35% 30%;
+
+  --border: 225 25% 18%;
+  --border-strong: 225 25% 25%;
+  --border-subtle: 225 25% 14%;
+
+  --shadow-xs: 0 1px 2px 0 hsl(225 60% 4% / 0.3);
+  --shadow-sm: 0 2px 4px 0 hsl(225 60% 4% / 0.4),
+    0 1px 2px -1px hsl(225 60% 4% / 0.3);
+  --shadow-md: 0 4px 12px -2px hsl(225 60% 4% / 0.5),
+    0 2px 6px -2px hsl(225 60% 4% / 0.35);
+  --shadow-lg: 0 12px 32px -4px hsl(225 60% 4% / 0.6),
+    0 4px 12px -4px hsl(225 60% 4% / 0.4);
+
+  --gradient-page: radial-gradient(circle at 50% -10%,
+      hsl(225 35% 12%) 0%,
+      hsl(225 35% 8%) 50%,
+      hsl(225 35% 8%) 100%);
+
+  --stripe-texture: repeating-linear-gradient(90deg,
+      transparent 0px,
+      transparent 38px,
+      rgba(255, 255, 255, 0.03) 38px,
+      rgba(255, 255, 255, 0.03) 40px);
+}
+
+/* ── Base Styles ───────────────────────────────────────────── */
+@layer base {
+  html {
+    background-color: hsl(var(--bg-page));
+    color: hsl(var(--text-secondary));
+    font-family: var(--font-body), system-ui, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    scroll-behavior: smooth;
+  }
+
+  body {
+    background:
+      var(--vignette),
+      var(--tech-dots),
+      var(--gradient-page);
+    background-size: 100% 100%, 24px 24px, 100% 100%;
+    background-attachment: fixed;
+    min-height: 100vh;
+  }
+
+  /* Selection color */
+  ::selection {
+    background: hsl(var(--accent-subtle));
+    color: hsl(var(--text-primary));
+  }
+
+  /* Scrollbar (webkit) */
+  ::-webkit-scrollbar {
+    width: 6px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: hsl(var(--bg-subtle));
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: hsl(var(--border-strong));
+    border-radius: var(--radius-full);
+  }
+}
+
+@keyframes fade-up {
+  0% {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fade-in {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes scale-in {
+  0% {
+    opacity: 0;
+    transform: scale(0.96);
+  }
+
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes slide-up {
+  0% {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes marquee {
+  0% {
+    transform: translateX(0);
+  }
+
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+@keyframes marquee-reverse {
+  0% {
+    transform: translateX(-50%);
+  }
+
+  100% {
+    transform: translateX(0);
+  }
+}
+
+@keyframes pulse-soft {
+
+  0%,
+  100% {
+    opacity: 1;
+  }
+
+  50% {
+    opacity: 0.5;
+  }
+}
+
+@keyframes float {
+
+  0%,
+  100% {
+    transform: translateY(0px);
+  }
+
+  50% {
+    transform: translateY(-6px);
+  }
+}
+
+@keyframes stripe-drift {
+  0% {
+    background-position: 0 0;
+  }
+
+  100% {
+    background-position: 40px 0;
+  }
+}
