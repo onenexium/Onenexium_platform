@@ -1,12 +1,11 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  experimental: {
-    // @ts-ignore - This is needed to fix the root inference issue mentioned in logs
-    turbopack: {
-      root: ".",
-    },
-  },
+  /* 
+     Note: Next.js 15 automatically handles Turbopack. 
+     If you encounter "multiple lockfiles" warnings, ensure 
+     parent directories (e.g., C:\Users\anand) don't have stray lockfiles.
+  */
 };
 
 export default nextConfig;

@@ -20,6 +20,7 @@ export const metadata: Metadata = {
 import { TooltipProvider } from '@/shared/components/ui/tooltip'
 import { AnnouncementBar } from '@/features/navigation/components/navbar-announcement-bar'
 import { Navbar } from '@/features/navigation/components/navbar'
+import { Footer } from '@/features/footer/components/footer'
 
 export default function RootLayout({
   children,
@@ -36,9 +37,14 @@ export default function RootLayout({
           disableTransitionOnChange
         >
           <TooltipProvider>
-            <AnnouncementBar />
-            <Navbar />
-            {children}
+            <div className="flex flex-col min-h-screen">
+              <AnnouncementBar />
+              <Navbar />
+              <main className="flex-grow">
+                {children}
+              </main>
+              <Footer />
+            </div>
           </TooltipProvider>
         </ThemeProvider>
       </body>
