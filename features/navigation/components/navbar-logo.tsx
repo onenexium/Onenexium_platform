@@ -25,7 +25,9 @@ export function NavbarLogo() {
                     <path d="M12 12L4 7.5" />
                 </svg>
             </div>
-            <span className="font-semibold text-text-primary">{siteConfig.name}</span>
+            <span className="text-lg md:text-xl font-bold tracking-tight text-text-primary whitespace-nowrap">
+                {siteConfig.name}
+            </span>
         </Link>
     )
 }

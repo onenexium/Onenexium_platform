@@ -21,7 +21,7 @@ export function Navbar() {
             )}
         >
             <div className="container mx-auto flex h-16 items-center justify-between px-4 sm:px-6 lg:px-8">
-                <div className="flex w-1/4 items-center justify-start">
+                <div className="flex flex-1 items-center justify-start md:flex-none md:w-1/4">
                     <NavbarLogo />
                 </div>
 
@@ -29,7 +29,7 @@ export function Navbar() {
                     <NavbarLinks />
                 </div>
 
-                <div className="flex w-1/4 items-center justify-end gap-x-2">
+                <div className="flex items-center justify-end gap-x-2 md:flex-none md:w-1/4">
                     <NavbarCta />
                     <NavbarMobile />
                 </div>
