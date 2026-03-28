@@ -1,0 +1,50 @@
+/**
+ * Platform / admin shell — aliases to global theme tokens (globals.css + html.dark).
+ * Only shadows, glass topbar, and nav-tint live here; no second color palette.
+ */
+
+:root {
+  --nx-bg: var(--background);
+  --nx-surface: var(--card);
+  --nx-surface-2: var(--secondary);
+  --nx-surface-3: var(--muted);
+  --nx-border: var(--border);
+  --nx-border-2: var(--border-strong);
+  --nx-text: var(--foreground);
+  --nx-text-2: var(--text-body);
+  --nx-text-3: var(--muted-foreground);
+  --nx-violet: var(--accent-purple);
+  --nx-blue: var(--primary);
+  --nx-blue-2: var(--primary);
+  --nx-blue-3: var(--primary);
+  --nx-green: var(--success);
+  --nx-red: var(--destructive);
+  --nx-amber: var(--warning);
+  --nx-sky: var(--info);
+  --nx-green-bg: var(--success-subtle);
+  --nx-amber-bg: var(--warning-subtle);
+  --nx-sidebar-bg: var(--card);
+
+  --nx-topbar-bg: rgba(255, 255, 255, 0.82);
+  --nx-sidebar-shadow: 1px 0 20px -4px rgba(15, 23, 42, 0.07);
+
+  --nx-card-shadow: 0 1px 3px rgba(15, 23, 42, 0.05), 0 4px 16px -3px rgba(15, 23, 42, 0.06);
+  --nx-card-shadow-hover: 0 8px 30px -4px rgba(15, 23, 42, 0.12), 0 2px 8px -2px rgba(15, 23, 42, 0.05);
+  --nx-composer-shadow: 0 4px 32px -6px rgba(15, 23, 42, 0.12), 0 12px 48px -8px rgba(99, 102, 241, 0.1);
+  --nx-shadow-primary-hover: 0 4px 20px rgba(99, 102, 241, 0.28);
+  --nx-nav-active-bg: rgba(99, 102, 241, 0.1);
+  --nx-nav-active-border: rgba(99, 102, 241, 0.24);
+  --nx-nav-pill-bg: rgba(99, 102, 241, 0.1);
+}
+
+html.dark {
+  --nx-topbar-bg: rgba(17, 24, 39, 0.8);
+  --nx-sidebar-shadow: 1px 0 24px -4px rgba(0, 0, 0, 0.5);
+  --nx-card-shadow: 0 1px 3px rgba(0, 0, 0, 0.3), 0 4px 16px -3px rgba(0, 0, 0, 0.25);
+  --nx-card-shadow-hover: 0 8px 30px -4px rgba(0, 0, 0, 0.5), 0 2px 8px -2px rgba(0, 0, 0, 0.25);
+  --nx-composer-shadow: 0 4px 32px -6px rgba(0, 0, 0, 0.55), 0 12px 48px -8px rgba(99, 102, 241, 0.15);
+  --nx-shadow-primary-hover: 0 4px 20px rgba(37, 99, 235, 0.4);
+  --nx-nav-active-bg: rgba(37, 99, 235, 0.14);
+  --nx-nav-active-border: rgba(37, 99, 235, 0.25);
+  --nx-nav-pill-bg: rgba(255, 255, 255, 0.07);
+}

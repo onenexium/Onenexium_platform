@@ -1,5 +1,9 @@
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
+## Documentation
+
+Project documentation (AWS, UI spec, credentials guidance) lives in **[`docs/`](./docs/)**.
+
 ## Getting Started
 
 First, run the development server:

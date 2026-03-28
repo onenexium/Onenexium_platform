@@ -1,92 +1,78 @@
 @import "tailwindcss";
 @import "tw-animate-css";
 @import "shadcn/tailwind.css";
-
-@custom-variant dark (&:is(.dark *));
+@import "../shared/styles/onenexium-dashboard-tokens.css";
+@import "../shared/styles/onenexium-marketing-dark.css";
+@import "../shared/styles/onenexium-pwa.css";
 
 :root {
-  /* ── Background System ───────────────────────────────── */
-  --bg-page: 220 33% 96%;
-  /* #f0f3fa — soft blue-white page bg  */
-  --bg-surface: 0 0% 100%;
-  /* #ffffff — cards, inputs, panels    */
-  --bg-surface-hover: 220 30% 98%;
-  /* slightly blue-tinted hover         */
-  --bg-subtle: 220 25% 94%;
-  /* #edf0f8 — muted backgrounds        */
-  --bg-muted: 220 20% 90%;
-  /* #e2e7f2 — borders, dividers        */
+  /* ── OneNexium: Brand ─────────────────────────────────── */
+  --indigo: #3d4ef0;
+  --electric: #23a0ff;
+  --gradient-primary: linear-gradient(135deg, #3d4ef0, #23a0ff);
+  /** Platform accents (links, pills) — Tailwind `premium-violet` */
+  --accent-purple: #7c3aed;
 
-  /* ── Text System ───────────────────────────────────── */
-  --text-primary: 240 40% 16%;
-  /* #1a1f3d — deep indigo-navy headings */
-  --text-secondary: 235 22% 32%;
-  /* #414868 — body text                */
-  --text-muted: 230 18% 52%;
-  /* #6b7599 — captions, placeholders   */
-  --text-disabled: 230 12% 68%;
-  /* #a2a9be — disabled states          */
-  --text-inverse: 0 0% 100%;
-  /* #ffffff — on dark backgrounds      */
+  /* ── OneNexium: Backgrounds (light surface) ─────────────── */
+  --page-bg: #f0f2f8;
+  --surface: #ffffff;
 
-  /* ── Brand Accent — Vivid Indigo ──────────────────── */
-  --accent: 245 58% 56%;
-  /* #5b4ee8 — vibrant indigo primary   */
-  --accent-hover: 245 62% 48%;
-  /* #4a3cc7 — deeper on hover          */
-  --accent-subtle: 245 60% 96%;
-  /* #f0eefe — light accent backgrounds */
-  --accent-border: 245 45% 78%;
-  /* #a89de6 — accent-tinted borders    */
+  /* ── OneNexium: Text ───────────────────────────────────── */
+  --text-primary: #0e1330;
+  --text-body: #2d3452;
+  --text-muted: #5b6b82;
 
-  /* ── Surface Borders ─────────────────────────────── */
-  --border: 235 22% 88%;
-  /* #dcdff0 — standard border          */
-  --border-strong: 235 22% 76%;
-  /* #b5bbe0 — emphasized border        */
-  --border-subtle: 235 22% 93%;
-  /* #eceef8 — very subtle border       */
+  /* ── OneNexium: Border ─────────────────────────────────── */
+  --border: #dde1f0;
 
-  /* ── Semantic ──────────────────────────────────── */
-  --success: 152 55% 42%;
-  /* vivid green                        */
-  --success-subtle: 152 55% 95%;
-  --warning: 38 90% 50%;
-  /* rich amber                         */
-  --warning-subtle: 38 90% 96%;
-  --error: 4 75% 50%;
-  /* strong red                         */
-  --error-subtle: 4 75% 96%;
+  /* ── OneNexium: Semantic ───────────────────────────────── */
+  --success: #10b981;
+  --error: #ef4444;
+  --warning: #f59e0b;
+  --info: #06b6d4;
 
-  /* ── shadcn/ui Compatibility (Root Mapping) ──────────── */
-  --background: var(--bg-page);
+  /* ── Aliases for components (light surface) ─────────────── */
+  --bg-page: #f0f2f8;
+  --bg-surface: #ffffff;
+  --bg-subtle: #e8ebf4;
+  --bg-muted: #dde1ef;
+  --text-inverse: #ffffff;
+  --accent: #3d4ef0;
+  --accent-hover: #3241cc;
+  --accent-subtle: #eef0fe;
+  --border-strong: #c8cee8;
+  --border-subtle: #e8eaf4;
+  --success-subtle: #d1fae5;
+  --error-subtle: #fee2e2;
+  --warning-subtle: #fef3c7;
+  --info-subtle: #cffafe;
+
+  /* ── shadcn/semantic mapping ───────────────────────────── */
+  --background: var(--page-bg);
   --foreground: var(--text-primary);
-  --card: var(--bg-surface);
+  --card: var(--surface);
   --card-foreground: var(--text-primary);
-  --popover: var(--bg-surface);
+  --popover: var(--surface);
   --popover-foreground: var(--text-primary);
-  --primary: var(--accent);
+  --primary: var(--indigo);
   --primary-foreground: var(--text-inverse);
   --secondary: var(--bg-subtle);
   --secondary-foreground: var(--text-primary);
   --muted: var(--bg-muted);
   --muted-foreground: var(--text-muted);
-  --accent: var(--accent-subtle);
-  --accent-foreground: var(--accent);
+  --accent-foreground: var(--text-inverse);
   --destructive: var(--error);
   --destructive-foreground: var(--text-inverse);
-  --border: var(--border);
-  --input: var(--border-subtle);
-  --ring: var(--accent);
-  --shadow-xs: 0 1px 2px 0 hsl(225 30% 15% / 0.04);
-  --shadow-sm: 0 2px 4px 0 hsl(225 30% 15% / 0.06),
-    0 1px 2px -1px hsl(225 30% 15% / 0.04);
-  --shadow-md: 0 4px 12px -2px hsl(225 30% 15% / 0.08),
-    0 2px 6px -2px hsl(225 30% 15% / 0.05);
-  --shadow-lg: 0 12px 32px -4px hsl(225 30% 15% / 0.10),
-    0 4px 12px -4px hsl(225 30% 15% / 0.06);
-  --shadow-xl: 0 24px 48px -8px hsl(225 30% 15% / 0.12),
-    0 8px 20px -6px hsl(225 30% 15% / 0.07);
+  --input: var(--border);
+  --ring: var(--indigo);
+  --overlay: 0 0% 0% / 0.5;
+
+  /* ── Elevation ─────────────────────────────────────────── */
+  --shadow-xs: 0 1px 2px 0 rgb(14 19 48 / 0.04);
+  --shadow-sm: 0 2px 8px -2px rgb(14 19 48 / 0.06), 0 1px 3px -2px rgb(14 19 48 / 0.04);
+  --shadow-md: 0 8px 24px -4px rgb(14 19 48 / 0.08), 0 4px 10px -4px rgb(14 19 48 / 0.05);
+  --shadow-lg: 0 16px 40px -6px rgb(14 19 48 / 0.10), 0 6px 16px -6px rgb(14 19 48 / 0.06);
+  --shadow-xl: 0 24px 56px -8px rgb(14 19 48 / 0.12), 0 10px 24px -8px rgb(14 19 48 / 0.07);
 
   /* ── Border Radius ───────────────────────────────────── */
   --radius-sm: 6px;
@@ -96,204 +82,104 @@
   --radius-2xl: 24px;
   --radius-full: 9999px;
 
-  /* ── Spacing Scale (Fluid for responsiveness) ────────── */
-  --section-py: clamp(4rem, 8vw, 8rem);
-  /* Fluid: 64px to 128px */
-  --container-px: clamp(1rem, 5vw, 2rem);
-  /* Fluid side padding */
+  /* ── Section & Container ──────────────────────────────── */
+  --container-max: 80rem;
+  --section-py: clamp(5rem, 12vw, 10rem);
+  --section-gap: clamp(3rem, 6vw, 4.5rem);
+  --container-px: clamp(1.25rem, 5vw, 2.5rem);
 
-  /* ── Typography Scale (Fluid using clamp) ────────────── */
-  --font-size-h1: clamp(2.5rem, 6vw + 1rem, 4.5rem);
-  --font-size-h2: clamp(2rem, 4vw + 1rem, 3.5rem);
-  --font-size-h3: clamp(1.5rem, 2vw + 1rem, 2.25rem);
+  /* ── Typography scale ─────────────────────────────────── */
+  --font-size-h1: clamp(2.75rem, 6vw + 1.25rem, 4.75rem);
+  --font-size-h2: clamp(2.25rem, 4vw + 1rem, 3.5rem);
+  --font-size-h3: clamp(1.375rem, 2vw + 0.75rem, 2.25rem);
+  --font-size-lead: clamp(1.0625rem, 0.5vw + 0.9rem, 1.25rem);
   --font-size-body: clamp(1rem, 0.2vw + 0.9rem, 1.125rem);
+  --font-size-kicker: 0.6875rem;
+  --leading-tight: 1.15;
+  --leading-relaxed: 1.65;
+  --tracking-kicker: 0.2em;
 
-  /* ── Transitions ─────────────────────────────────────── */
+  /* ── Transitions ───────────────────────────────────────── */
   --transition-fast: 150ms cubic-bezier(0.4, 0, 0.2, 1);
   --transition-base: 200ms cubic-bezier(0.4, 0, 0.2, 1);
   --transition-slow: 300ms cubic-bezier(0.4, 0, 0.2, 1);
   --transition-enter: 500ms cubic-bezier(0.16, 1, 0.3, 1);
-  /* spring-like */
 
-  /* ── Professional Background Stack ───────────────────── */
-  --gradient-page: linear-gradient(135deg,
-      hsl(220 45% 95%) 0%,
-      hsl(220 33% 96%) 50%,
-      hsl(220 33% 96%) 100%);
-
-  --vignette: radial-gradient(circle at center,
-      transparent 30%,
-      rgba(220, 230, 250, 0.15) 100%);
-
-  /* ── Tech Dot Grid Texture ────────────────────────── */
-  --tech-dots: radial-gradient(circle,
-      hsl(225 30% 80% / 0.1) 1px,
-      transparent 1px);
-
-  /* ── Animated Mesh Gradient Blobs (Light) ───────────── */
-  --mesh-blob-1: radial-gradient(ellipse 120% 100% at 10% 20%,
-      hsla(250, 75%, 72%, 0.40) 0%,
-      hsla(270, 70%, 80%, 0.20) 30%,
-      hsla(280, 60%, 88%, 0.06) 60%,
-      transparent 80%);
-  --mesh-blob-2: radial-gradient(ellipse 110% 130% at 85% 10%,
-      hsla(190, 80%, 70%, 0.38) 0%,
-      hsla(200, 75%, 78%, 0.18) 30%,
-      hsla(210, 65%, 86%, 0.05) 60%,
-      transparent 80%);
-  --mesh-blob-3: radial-gradient(ellipse 130% 110% at 40% 90%,
-      hsla(325, 70%, 75%, 0.35) 0%,
-      hsla(340, 65%, 82%, 0.16) 30%,
-      hsla(350, 55%, 90%, 0.04) 60%,
-      transparent 80%);
-  --mesh-blob-4: radial-gradient(ellipse 100% 90% at 95% 60%,
-      hsla(155, 65%, 70%, 0.32) 0%,
-      hsla(165, 60%, 78%, 0.14) 30%,
-      hsla(175, 50%, 86%, 0.04) 60%,
-      transparent 80%);
-  --mesh-blob-5: radial-gradient(ellipse 140% 80% at 50% 50%,
-      hsla(30, 80%, 74%, 0.25) 0%,
-      hsla(40, 75%, 82%, 0.12) 30%,
-      hsla(50, 65%, 90%, 0.03) 60%,
-      transparent 80%);
+  /* ── Marketing gradient layers (used by .marketing-gradient) ─ */
+  --bg-gradient-base: linear-gradient(
+    160deg,
+    #f8f9fd 0%,
+    #f4f6fd 22%,
+    #f0f2fc 50%,
+    #f4f6fd 78%,
+    #f8f9fd 100%
+  );
+  --bg-gradient-vignette: radial-gradient(
+    ellipse 120% 100% at 50% 50%,
+    transparent 40%,
+    rgb(61 78 240 / 0.04) 100%
+  );
+  --bg-gradient-glow: radial-gradient(
+    ellipse 100% 60% at 50% -5%,
+    rgb(35 160 255 / 0.12) 0%,
+    transparent 50%
+  );
 }
 
-/* ── Dark Mode Overrides ───────────────────────────────────── */
-.dark {
-  --bg-page: 225 35% 8%;
-  /* #0d1120 — very deep navy           */
-  --bg-surface: 225 30% 11%;
-  /* #141929 — card backgrounds         */
-  --bg-surface-hover: 225 28% 14%;
-  --bg-subtle: 225 28% 13%;
-  --bg-muted: 225 25% 16%;
+/* ── Global html/body: theme-aware, no leaked gradients ──────── */
+html {
+  min-height: 100%;
+  background-color: var(--background);
+}
 
-  --text-primary: 240 35% 94%;
-  /* #e8ecf8 — warm near-white headings */
-  --text-secondary: 235 22% 72%;
-  /* #a5adc8 — body text                */
-  --text-muted: 230 18% 48%;
-  /* #636e8a — muted text               */
-  --text-disabled: 230 12% 32%;
+body {
+  min-height: 100vh;
+  background-color: var(--background);
+  color: var(--foreground);
+}
 
-  --accent: 245 55% 68%;
-  /* brighter indigo for dark bg        */
-  --accent-hover: 245 58% 75%;
-  /* vivid hover glow                   */
-  --accent-subtle: 245 45% 15%;
-  --accent-border: 245 40% 30%;
-
-  --border: 240 22% 18%;
-  --border-strong: 240 22% 26%;
-  --border-subtle: 240 22% 14%;
-
-  --shadow-xs: 0 1px 2px 0 hsl(225 60% 4% / 0.3);
-  --shadow-sm: 0 2px 4px 0 hsl(225 60% 4% / 0.4),
-    0 1px 2px -1px hsl(225 60% 4% / 0.3);
-  --shadow-md: 0 4px 12px -2px hsl(225 60% 4% / 0.5),
-    0 2px 6px -2px hsl(225 60% 4% / 0.35);
-  --shadow-lg: 0 12px 32px -4px hsl(225 60% 4% / 0.6),
-    0 4px 12px -4px hsl(225 60% 4% / 0.4);
-
-  --gradient-page: radial-gradient(circle at 50% -10%,
-      hsl(225 35% 12%) 0%,
-      hsl(225 35% 8%) 50%,
-      hsl(225 35% 8%) 100%);
-
-  /* ── Animated Mesh Gradient Blobs (Dark) ────────────── */
-  --mesh-blob-1: radial-gradient(ellipse 120% 100% at 10% 20%,
-      hsla(255, 55%, 28%, 0.30) 0%,
-      hsla(270, 45%, 20%, 0.12) 30%,
-      hsla(280, 35%, 15%, 0.04) 60%,
-      transparent 80%);
-  --mesh-blob-2: radial-gradient(ellipse 110% 130% at 85% 10%,
-      hsla(205, 60%, 28%, 0.25) 0%,
-      hsla(215, 50%, 22%, 0.10) 30%,
-      hsla(225, 40%, 16%, 0.03) 60%,
-      transparent 80%);
-  --mesh-blob-3: radial-gradient(ellipse 130% 110% at 40% 90%,
-      hsla(295, 45%, 26%, 0.22) 0%,
-      hsla(305, 38%, 20%, 0.09) 30%,
-      hsla(315, 30%, 14%, 0.03) 60%,
-      transparent 80%);
-  --mesh-blob-4: radial-gradient(ellipse 100% 90% at 95% 60%,
-      hsla(170, 50%, 25%, 0.20) 0%,
-      hsla(178, 42%, 20%, 0.08) 30%,
-      hsla(185, 35%, 14%, 0.02) 60%,
-      transparent 80%);
-  --mesh-blob-5: radial-gradient(ellipse 140% 80% at 50% 50%,
-      hsla(35, 50%, 28%, 0.15) 0%,
-      hsla(42, 42%, 22%, 0.06) 30%,
-      hsla(48, 35%, 16%, 0.02) 60%,
-      transparent 80%);
-
-  /* ── shadcn/ui Compatibility (Dark Mapping) ──────────── */
-  --background: var(--bg-page);
-  --foreground: var(--text-primary);
-  --card: var(--bg-surface);
-  --card-foreground: var(--text-primary);
-  --popover: var(--bg-surface);
-  --popover-foreground: var(--text-primary);
-  --primary: var(--accent);
-  --primary-foreground: var(--text-primary);
-  /* Lighter in dark mode */
-  --secondary: var(--bg-subtle);
-  --secondary-foreground: var(--text-primary);
-  --muted: var(--bg-muted);
-  --muted-foreground: var(--text-muted);
-  --accent: var(--accent-subtle);
-  --accent-foreground: var(--accent);
-  --destructive: var(--error);
-  --destructive-foreground: var(--text-primary);
-  --border: var(--border);
-  --input: var(--border-subtle);
-  --ring: var(--accent);
-
-  --stripe-texture: repeating-linear-gradient(90deg,
-      transparent 0px,
-      transparent 38px,
-      rgba(255, 255, 255, 0.03) 38px,
-      rgba(255, 255, 255, 0.03) 40px);
+/* ── Marketing gradient — only applied to the marketing shell ── */
+.marketing-gradient {
+  background:
+    var(--bg-gradient-glow),
+    var(--bg-gradient-vignette),
+    var(--bg-gradient-base);
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 100% 100%;
 }
 
 /* ── Base Styles ───────────────────────────────────────────── */
 @layer base {
+  *,
+  ::after,
+  ::before {
+    border-color: var(--border);
+  }
+
   html {
-    background-color: hsl(var(--bg-page));
-    color: hsl(var(--text-secondary));
-    font-family: var(--font-body), system-ui, sans-serif;
+    color: var(--foreground);
+    font-family: var(--font-outfit), ui-sans-serif, system-ui, sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     scroll-behavior: smooth;
   }
 
   body {
-    background:
-      var(--vignette),
-      var(--tech-dots),
-      var(--mesh-blob-1),
-      var(--mesh-blob-2),
-      var(--mesh-blob-3),
-      var(--mesh-blob-4),
-      var(--mesh-blob-5),
-      var(--gradient-page);
-    background-size:
-      100% 100%,
-      24px 24px,
-      300% 300%,
-      300% 300%,
-      300% 300%,
-      300% 300%,
-      300% 300%,
-      100% 100%;
-    background-attachment: fixed;
-    animation: gradient-drift 25s cubic-bezier(0.4, 0, 0.2, 1) infinite;
-    min-height: 100vh;
     font-size: var(--font-size-body);
     line-height: 1.6;
   }
 
-  /* ── Fluid Typography Utilities ──────────────────────── */
+  h1,
+  h2,
+  h3,
+  .text-h1,
+  .text-h2,
+  .text-h3 {
+    font-family: var(--font-bricolage), ui-sans-serif, system-ui, sans-serif;
+  }
+
   h1,
   .text-h1 {
     font-size: var(--font-size-h1);
@@ -311,178 +197,96 @@
   h3,
   .text-h3 {
     font-size: var(--font-size-h3);
-    line-height: 1.3;
+    line-height: var(--leading-tight);
   }
 
-  /* Selection color */
+  .section-container {
+    width: 100%;
+    max-width: var(--container-max);
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: var(--container-px);
+    padding-right: var(--container-px);
+  }
+
+  .section-kicker {
+    font-size: var(--font-size-kicker);
+    font-weight: 600;
+    letter-spacing: var(--tracking-kicker);
+    text-transform: uppercase;
+    color: var(--muted-foreground);
+  }
+
   ::selection {
-    background: hsl(var(--accent-subtle));
-    color: hsl(var(--text-primary));
+    background: var(--accent-subtle);
+    color: var(--foreground);
   }
 
-  /* Scrollbar (webkit) */
   ::-webkit-scrollbar {
     width: 6px;
   }
 
   ::-webkit-scrollbar-track {
-    background: hsl(var(--bg-subtle));
+    background: var(--secondary);
   }
 
   ::-webkit-scrollbar-thumb {
-    background: hsl(var(--border-strong));
+    background: var(--border);
     border-radius: var(--radius-full);
+  }
+
+  code, pre, .font-mono {
+    font-family: var(--font-mono), ui-monospace, monospace;
   }
 }
 
 @keyframes fade-up {
-  0% {
-    opacity: 0;
-    transform: translateY(16px);
-  }
-
-  100% {
-    opacity: 1;
-    transform: translateY(0);
-  }
+  0% { opacity: 0; transform: translateY(16px); }
+  100% { opacity: 1; transform: translateY(0); }
 }
 
 @keyframes fade-in {
-  0% {
-    opacity: 0;
-  }
-
-  100% {
-    opacity: 1;
-  }
+  0% { opacity: 0; }
+  100% { opacity: 1; }
 }
 
 @keyframes scale-in {
-  0% {
-    opacity: 0;
-    transform: scale(0.96);
-  }
-
-  100% {
-    opacity: 1;
-    transform: scale(1);
-  }
+  0% { opacity: 0; transform: scale(0.96); }
+  100% { opacity: 1; transform: scale(1); }
 }
 
 @keyframes slide-up {
-  0% {
-    opacity: 0;
-    transform: translateY(24px);
-  }
-
-  100% {
-    opacity: 1;
-    transform: translateY(0);
-  }
+  0% { opacity: 0; transform: translateY(24px); }
+  100% { opacity: 1; transform: translateY(0); }
 }
 
 @keyframes marquee {
-  0% {
-    transform: translateX(0);
-  }
-
-  100% {
-    transform: translateX(-50%);
-  }
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
 }
 
 @keyframes marquee-reverse {
-  0% {
-    transform: translateX(-50%);
-  }
-
-  100% {
-    transform: translateX(0);
-  }
+  0% { transform: translateX(-50%); }
+  100% { transform: translateX(0); }
 }
 
 @keyframes pulse-soft {
-
-  0%,
-  100% {
-    opacity: 1;
-  }
-
-  50% {
-    opacity: 0.5;
-  }
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.5; }
 }
 
 @keyframes float {
-
-  0%,
-  100% {
-    transform: translateY(0px);
-  }
-
-  50% {
-    transform: translateY(-6px);
-  }
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-6px); }
 }
 
 @keyframes stripe-drift {
-  0% {
-    background-position: 0 0;
-  }
-
-  100% {
-    background-position: 40px 0;
-  }
-}
-
-@keyframes gradient-drift {
-
-  0%,
-  100% {
-    background-position:
-      center, 0 0,
-      0% 0%, 100% 0%, 50% 100%, 100% 50%, 50% 50%,
-      center;
-  }
-
-  16.67% {
-    background-position:
-      center, 0 0,
-      33% 16%, 66% 33%, 16% 66%, 83% 83%, 25% 16%,
-      center;
-  }
-
-  33.33% {
-    background-position:
-      center, 0 0,
-      66% 33%, 33% 66%, 83% 16%, 16% 100%, 66% 50%,
-      center;
-  }
-
-  50% {
-    background-position:
-      center, 0 0,
-      100% 50%, 0% 100%, 50% 0%, 50% 66%, 100% 83%,
-      center;
-  }
-
-  66.67% {
-    background-position:
-      center, 0 0,
-      66% 83%, 33% 50%, 83% 50%, 0% 16%, 50% 100%,
-      center;
-  }
-
-  83.33% {
-    background-position:
-      center, 0 0,
-      33% 66%, 83% 16%, 33% 33%, 66% 0%, 83% 33%,
-      center;
-  }
+  0% { background-position: 0 0; }
+  100% { background-position: 40px 0; }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  body {
-    animation: none !important;
+  html {
+    background-attachment: scroll;
   }
 }

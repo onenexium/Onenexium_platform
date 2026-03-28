@@ -1,0 +1,82 @@
+/**
+ * Marketing / global shell — dark mode overrides (next-themes `html.dark`).
+ * Light values remain in `app/globals.css` :root.
+ */
+html.dark {
+  --indigo: #3d4ef0;
+  --electric: #23a0ff;
+  --gradient-primary: linear-gradient(135deg, #3d4ef0, #23a0ff);
+  --accent-purple: #8b5cf6;
+
+  --page-bg: #080c14;
+  --surface: #0e1420;
+
+  --text-primary: #f0f4ff;
+  --text-body: #cbd5e1;
+  --text-muted: #94a3b8;
+
+  --border: #1e2d47;
+
+  --success: #10b981;
+  --error: #f87171;
+  --warning: #fbbf24;
+  --info: #22d3ee;
+
+  --bg-page: #080c14;
+  --bg-surface: #0e1420;
+  --bg-subtle: #141c2e;
+  --bg-muted: #1a2338;
+  --text-inverse: #ffffff;
+  --accent: #3d4ef0;
+  --accent-hover: #5b6ef5;
+  --accent-subtle: rgba(61, 78, 240, 0.22);
+  --border-strong: #253450;
+  --border-subtle: #1e2d47;
+  --success-subtle: rgba(16, 185, 129, 0.15);
+  --error-subtle: rgba(248, 113, 113, 0.15);
+  --warning-subtle: rgba(251, 191, 36, 0.12);
+  --info-subtle: rgba(34, 211, 238, 0.12);
+
+  --background: var(--page-bg);
+  --foreground: var(--text-primary);
+  --card: #0e1420;
+  --card-foreground: #f0f4ff;
+  --popover: #0e1420;
+  --popover-foreground: #f0f4ff;
+  --primary: #3d4ef0;
+  --primary-foreground: #ffffff;
+  --secondary: #141c2e;
+  --secondary-foreground: #f0f4ff;
+  --muted: #1a2338;
+  --muted-foreground: #94a3b8;
+  --accent-foreground: #ffffff;
+  --destructive: #f87171;
+  --destructive-foreground: #ffffff;
+  --input: #1e2d47;
+  --ring: #3d4ef0;
+  --overlay: 0 0% 0% / 0.65;
+
+  --shadow-xs: 0 1px 2px 0 rgb(0 0 0 / 0.45);
+  --shadow-sm: 0 2px 8px -2px rgb(0 0 0 / 0.5), 0 1px 3px -2px rgb(0 0 0 / 0.35);
+  --shadow-md: 0 8px 24px -4px rgb(0 0 0 / 0.45);
+  --shadow-lg: 0 16px 40px -6px rgb(0 0 0 / 0.5);
+  --shadow-xl: 0 24px 56px -8px rgb(0 0 0 / 0.55);
+
+  --bg-gradient-base: linear-gradient(
+    160deg,
+    #0a1020 0%,
+    #080c14 35%,
+    #0c1428 70%,
+    #080c14 100%
+  );
+  --bg-gradient-vignette: radial-gradient(
+    ellipse 120% 100% at 50% 50%,
+    transparent 35%,
+    rgb(61 78 240 / 0.09) 100%
+  );
+  --bg-gradient-glow: radial-gradient(
+    ellipse 100% 55% at 50% -5%,
+    rgb(35 160 255 / 0.1) 0%,
+    transparent 52%
+  );
+}

@@ -1,0 +1,42 @@
+/**
+ * PWA shell — safe areas, focus rings, motion preferences (see docs/onenexium_pwa_layout_concept.md).
+ */
+
+/* Dynamic viewport height for mobile browsers + PWA */
+:root {
+  --pwa-nav-height: 4.25rem;
+}
+
+/* Safe-area padding utilities (use with fixed bottom nav / notches) */
+.pb-safe {
+  padding-bottom: env(safe-area-inset-bottom, 0px);
+}
+
+.pt-safe {
+  padding-top: env(safe-area-inset-top, 0px);
+}
+
+.pl-safe {
+  padding-left: env(safe-area-inset-left, 0px);
+}
+
+.pr-safe {
+  padding-right: env(safe-area-inset-right, 0px);
+}
+
+/* Premium focus — WCAG-friendly; never remove outline, only style */
+.premium-focus:focus-visible {
+  outline: 2px solid var(--ring);
+  outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-page-in,
+  .animate-card-in,
+  .animate-stat-in,
+  .animate-premium-card-hover {
+    animation: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+  }
+}
