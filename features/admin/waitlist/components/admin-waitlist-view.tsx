@@ -1,4 +1,4 @@
-import { getWaitlistEntries } from "@/shared/lib/waitlist-store"
+import { getWaitlistEntries } from "@/server/waitlist/store"
 
 export async function AdminWaitlistView() {
   const entries = await getWaitlistEntries()

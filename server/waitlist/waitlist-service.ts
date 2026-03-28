@@ -3,7 +3,7 @@ import { z } from "zod"
 import {
   saveWaitlistEntry,
   getWaitlistEntries,
-} from "@/shared/lib/waitlist-store"
+} from "@/server/waitlist/store"
 
 export const waitlistSchema = z.object({
   name: z.string().min(1, "Name is required"),

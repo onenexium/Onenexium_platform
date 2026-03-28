@@ -1,55 +1,38 @@
 import NextAuth from "next-auth"
+import Credentials from "next-auth/providers/credentials"
 import Google from "next-auth/providers/google"
 
-import type { NextAuthConfig } from "next-auth"
+import { authConfig } from "./auth.config"
+import { getGoogleOAuthPair } from "@/features/auth/lib/auth-env"
 
-const googleConfigured =
-  Boolean(process.env.AUTH_GOOGLE_ID?.trim()) &&
-  Boolean(process.env.AUTH_GOOGLE_SECRET?.trim())
-
-const providers = googleConfigured
+const googlePair = getGoogleOAuthPair()
+const googleProviders = googlePair
   ? [
       Google({
-        clientId: process.env.AUTH_GOOGLE_ID!,
-        clientSecret: process.env.AUTH_GOOGLE_SECRET!,
+        clientId: googlePair.id,
+        clientSecret: googlePair.secret,
       }),
     ]
   : []
 
-export const authConfig = {
-  trustHost: true,
-  /** AUTH_SECRET / NEXTAUTH_SECRET read from env (including after SM bootstrap). */
-  session: { strategy: "jwt", maxAge: 30 * 24 * 60 * 60 },
-  providers,
-  pages: {
-    signIn: "/login",
+const credentialsProvider = Credentials({
+  id: "credentials",
+  name: "Email and password",
+  credentials: {
+    email: { label: "Email", type: "email" },
+    password: { label: "Password", type: "password" },
   },
-  callbacks: {
-    authorized({ auth, request }) {
-      const pathname = request.nextUrl.pathname
-
-      if (pathname.startsWith("/api/")) {
-        return true
-      }
-
-      if (pathname.startsWith("/app") || pathname.startsWith("/admin")) {
-        return !!auth?.user
-      }
-
-      return true
-    },
-    jwt({ token, user, profile }) {
-      if (user?.id) token.sub = user.id
-      if (typeof profile?.sub === "string" && profile.sub) token.sub = profile.sub
-      return token
-    },
-    session({ session, token }) {
-      if (session.user) {
-        session.user.id = token.sub ?? ""
-      }
-      return session
-    },
+  authorize: async (credentials) => {
+    if (!credentials?.email || !credentials?.password) return null
+    const { authorizeCredentialsUser } = await import("@/server/auth/authorize-credentials")
+    return authorizeCredentialsUser({
+      email: String(credentials.email),
+      password: String(credentials.password),
+    })
   },
-} satisfies NextAuthConfig
+})
 
-export const { handlers, auth, signIn, signOut } = NextAuth(authConfig)
+export const { handlers, auth, signIn, signOut } = NextAuth({
+  ...authConfig,
+  providers: [...googleProviders, credentialsProvider],
+})

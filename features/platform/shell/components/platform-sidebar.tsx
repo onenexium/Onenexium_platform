@@ -10,11 +10,9 @@ import {
   LifeBuoy,
   Plus,
   Settings,
-  Zap,
 } from "lucide-react"
 
 import { routes } from "@/config/routes"
-import { siteConfig } from "@/config/site"
 import { cn } from "@/shared/lib/utils"
 
 function isHome(pathname: string) {
@@ -25,34 +23,27 @@ function isProjects(pathname: string) {
   return pathname.startsWith(routes.platform.projects)
 }
 
-export function PlatformSidebar() {
+type PlatformSidebarProps = {
+  open: boolean
+}
+
+export function PlatformSidebar({ open }: PlatformSidebarProps) {
   const pathname = usePathname()
   const homeActive = isHome(pathname)
   const appsActive = isProjects(pathname)
 
   return (
     <aside
+      id="platform-sidebar"
       className={cn(
-        "hidden w-[220px] shrink-0 flex-col md:flex",
-        "bg-premium-sidebar border-r border-premium-border shadow-premium-sidebar",
+        "hidden h-full min-h-0 w-[220px] shrink-0 overflow-y-auto border-r border-premium-border bg-premium-sidebar shadow-premium-sidebar",
+        open ? "md:flex md:flex-col" : "md:hidden",
       )}
     >
-      <div className="px-4 pt-5 pb-4">
-        <Link
-          href={routes.platform.root}
-          className="flex items-center gap-2.5 rounded-lg transition-opacity hover:opacity-90"
-        >
-          <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-gradient-primary shadow-md ring-1 ring-black/5">
-            <Zap className="h-4 w-4 text-white" aria-hidden />
-          </div>
-          <span className="font-heading text-[15px] font-semibold tracking-[-0.03em] text-premium-text">
-            {siteConfig.name}
-          </span>
-        </Link>
-
+      <div className="px-4 pb-4 pt-4">
         <Link
           href={routes.platform.projects}
-          className="premium-focus mt-5 flex w-full items-center justify-center gap-2 rounded-xl bg-gradient-primary py-2.5 text-sm font-semibold text-primary-foreground shadow-md ring-1 ring-indigo-500/15 transition hover:-translate-y-px hover:opacity-95 hover:shadow-premium-primary-hover"
+          className="premium-focus flex w-full items-center justify-center gap-2 rounded-xl bg-gradient-primary py-2.5 text-sm font-semibold text-primary-foreground shadow-md ring-1 ring-indigo-500/15 transition hover:-translate-y-px hover:opacity-95 hover:shadow-premium-primary-hover"
         >
           <Plus className="h-4 w-4 shrink-0" aria-hidden />
           Create new app

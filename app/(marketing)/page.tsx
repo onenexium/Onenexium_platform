@@ -5,7 +5,7 @@ import {
   PricingSection,
   ProblemSection,
   WaitlistSection,
-} from "@modules/marketing"
+} from "@/features/marketing"
 
 export default function Home() {
   return (

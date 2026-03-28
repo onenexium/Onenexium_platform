@@ -19,7 +19,7 @@ export const routes = {
     root: "/admin",
   },
   auth: {
-    /** Reserved for NextAuth — see docs/onenexium-ui-spec.md */
     login: "/login",
+    signup: "/signup",
   },
 } as const

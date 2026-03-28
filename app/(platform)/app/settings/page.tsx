@@ -1,4 +1,4 @@
-import { SignOutButton } from "./sign-out-button"
+import { SignOutButton } from "@/features/auth"
 
 export default function PlatformSettingsPage() {
   return (

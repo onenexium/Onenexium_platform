@@ -2,6 +2,8 @@
  * Auth routes — no marketing chrome. Full-viewport centered card.
  * Background follows the global theme (light/dark) via CSS vars.
  */
+export const dynamic = "force-dynamic"
+
 export default function AuthLayout({
   children,
 }: Readonly<{

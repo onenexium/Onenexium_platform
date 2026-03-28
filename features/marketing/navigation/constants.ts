@@ -16,4 +16,4 @@ export const NAV_LINKS = [
 
 /** Monolith routes — same origin as marketing and platform. */
 export const SIGN_IN_HREF = routes.auth.login
-export const SIGN_UP_HREF = routes.platform.root
+export const SIGN_UP_HREF = routes.auth.signup

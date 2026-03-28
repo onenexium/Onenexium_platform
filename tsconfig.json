@@ -25,12 +25,7 @@
       }
     ],
     "paths": {
-      "@/*": ["./*"],
-      "@modules/*": ["./modules/*"],
-      "@features/*": ["./features/*"],
-      "@shared/*": ["./shared/*"],
-      "@config/*": ["./config/*"],
-      "@server/*": ["./server/*"]
+      "@/*": ["./*"]
     }
   },
   "include": [

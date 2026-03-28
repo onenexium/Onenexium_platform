@@ -10,7 +10,7 @@ declare global {
   var __onenexium_drizzle: Db | undefined
 }
 
-function getDb(): Db {
+function createPool() {
   const url = process.env.DATABASE_URL
   if (!url?.trim()) {
     throw new Error(
@@ -18,12 +18,20 @@ function getDb(): Db {
     )
   }
 
+  const options =
+    url.includes("rds.amazonaws.com") || process.env.DATABASE_SSL === "require"
+      ? ({ max: 10, prepare: false, ssl: "require" } as const)
+      : ({ max: 10, prepare: false } as const)
+
+  return postgres(url, options)
+}
+
+/**
+ * Lazy Drizzle client — avoids requiring DATABASE_URL at module load (e.g. `next build`).
+ */
+export function getDb(): Db {
   if (!globalThis.__onenexium_postgres) {
-    const options =
-      url.includes("rds.amazonaws.com") || process.env.DATABASE_SSL === "require"
-        ? ({ max: 10, prepare: false, ssl: "require" } as const)
-        : ({ max: 10, prepare: false } as const)
-    globalThis.__onenexium_postgres = postgres(url, options)
+    globalThis.__onenexium_postgres = createPool()
   }
 
   if (!globalThis.__onenexium_drizzle) {
@@ -34,11 +42,5 @@ function getDb(): Db {
 
   return globalThis.__onenexium_drizzle
 }
-
-/**
- * Singleton Postgres + Drizzle client for the Node.js server (route handlers, server actions).
- * Do not import from Edge middleware.
- */
-export const db = getDb()
 
 export { schema }

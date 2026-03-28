@@ -1,6 +1,6 @@
 import { sendSimpleEmail } from "@/server/aws"
 
-import type { WaitlistEntry } from "@/shared/lib/waitlist-store"
+import type { WaitlistEntry } from "@/server/waitlist/store"
 
 /**
  * Optional internal notification when someone joins the waitlist (Amazon SES).
