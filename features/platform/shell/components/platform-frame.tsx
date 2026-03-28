@@ -18,10 +18,10 @@ export function PlatformFrame({ children }: PlatformFrameProps) {
   const pathname = usePathname()
   const meta = resolvePlatformMeta(pathname)
   const headerVariant = meta.headerVariant ?? "standard"
-  const [sidebarOpen, setSidebarOpen] = useState(true)
+  const [sidebarExpanded, setSidebarExpanded] = useState(true)
 
   const toggleSidebar = useCallback(() => {
-    setSidebarOpen((o) => !o)
+    setSidebarExpanded((e) => !e)
   }, [])
 
   return (
@@ -29,12 +29,12 @@ export function PlatformFrame({ children }: PlatformFrameProps) {
       <PlatformHeader
         headerVariant={headerVariant}
         title={meta.title}
-        sidebarOpen={sidebarOpen}
+        sidebarExpanded={sidebarExpanded}
         onToggleSidebar={toggleSidebar}
         {...(meta.subtitle !== undefined ? { subtitle: meta.subtitle } : {})}
       />
       <div className="flex min-h-0 min-w-0 flex-1 flex-row">
-        <PlatformSidebar open={sidebarOpen} />
+        <PlatformSidebar expanded={sidebarExpanded} />
         <main
           className={cn(
             "animate-page-in min-h-0 min-w-0 flex-1 overflow-x-hidden overflow-y-auto px-4 pb-28 pt-6 sm:px-6 sm:pb-8 md:pb-8 lg:px-10",

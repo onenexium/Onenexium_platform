@@ -14,8 +14,8 @@ type PlatformHeaderProps = {
   title: string
   subtitle?: string
   headerVariant?: "standard" | "home"
-  /** Desktop sidebar visibility; toggle lives in the header only. */
-  sidebarOpen?: boolean
+  /** Desktop sidebar: true = full width, false = icon rail. */
+  sidebarExpanded?: boolean
   onToggleSidebar?: () => void
 }
 
@@ -26,14 +26,32 @@ function breadcrumbFromPath(pathname: string): string {
 }
 
 function PlatformBrandingAndSidebarToggle({
-  sidebarOpen,
+  sidebarExpanded,
   onToggleSidebar,
 }: {
-  sidebarOpen: boolean
+  sidebarExpanded: boolean
   onToggleSidebar?: () => void
 }) {
   return (
     <div className="flex min-w-0 shrink-0 items-center gap-1.5 sm:gap-2">
+      {onToggleSidebar ? (
+        <Button
+          type="button"
+          variant="ghost"
+          size="icon"
+          className="premium-focus hidden h-9 w-9 shrink-0 text-premium-text-3 hover:bg-premium-surface-2 hover:text-premium-text-2 md:inline-flex"
+          aria-label={sidebarExpanded ? "Collapse sidebar" : "Expand sidebar"}
+          aria-expanded={sidebarExpanded}
+          aria-controls="platform-sidebar"
+          onClick={onToggleSidebar}
+        >
+          {sidebarExpanded ? (
+            <PanelLeftClose className="h-5 w-5" aria-hidden />
+          ) : (
+            <PanelLeft className="h-5 w-5" aria-hidden />
+          )}
+        </Button>
+      ) : null}
       <Link
         href={routes.platform.root}
         className="premium-focus flex min-w-0 items-center gap-2 rounded-lg transition-opacity hover:opacity-90 sm:gap-2.5"
@@ -45,24 +63,6 @@ function PlatformBrandingAndSidebarToggle({
           {siteConfig.name}
         </span>
       </Link>
-      {onToggleSidebar ? (
-        <Button
-          type="button"
-          variant="ghost"
-          size="icon"
-          className="premium-focus hidden h-9 w-9 shrink-0 text-premium-text-3 hover:bg-premium-surface-2 hover:text-premium-text-2 md:inline-flex"
-          aria-label={sidebarOpen ? "Collapse sidebar" : "Expand sidebar"}
-          aria-expanded={sidebarOpen}
-          aria-controls="platform-sidebar"
-          onClick={onToggleSidebar}
-        >
-          {sidebarOpen ? (
-            <PanelLeftClose className="h-5 w-5" aria-hidden />
-          ) : (
-            <PanelLeft className="h-5 w-5" aria-hidden />
-          )}
-        </Button>
-      ) : null}
     </div>
   )
 }
@@ -71,7 +71,7 @@ export function PlatformHeader({
   title,
   subtitle,
   headerVariant = "standard",
-  sidebarOpen = true,
+  sidebarExpanded = true,
   onToggleSidebar,
 }: PlatformHeaderProps) {
   const pathname = usePathname()
@@ -81,7 +81,7 @@ export function PlatformHeader({
     return (
       <header className="z-30 flex min-h-[52px] shrink-0 items-center gap-2 border-b border-premium-border bg-premium-topbar-bg px-4 py-2 backdrop-blur-xl sm:gap-3 sm:px-6">
         <PlatformBrandingAndSidebarToggle
-          sidebarOpen={sidebarOpen}
+          sidebarExpanded={sidebarExpanded}
           {...(onToggleSidebar !== undefined ? { onToggleSidebar } : {})}
         />
         <div className="flex min-w-0 flex-1 items-center justify-end gap-2 sm:gap-3">
@@ -111,7 +111,7 @@ export function PlatformHeader({
   return (
     <header className="z-30 flex min-h-[52px] shrink-0 flex-wrap items-center gap-3 border-b border-premium-border bg-premium-topbar-bg px-4 py-2 backdrop-blur-xl sm:px-6">
       <PlatformBrandingAndSidebarToggle
-        sidebarOpen={sidebarOpen}
+        sidebarExpanded={sidebarExpanded}
         {...(onToggleSidebar !== undefined ? { onToggleSidebar } : {})}
       />
       <div className="flex min-w-0 flex-1 flex-col gap-0.5 sm:flex-row sm:items-baseline sm:gap-4">
